@@ -17,7 +17,7 @@ router.get('/:id', mw.checkAccountId, async (req, res) => {
 
 router.post('/', 
 mw.checkAccountPayload, 
-mw.checkAccountId, (req, res, next) => {
+mw.checkAccountNameUnique, (req, res, next) => {
   try {
     res.json('post account')
   } catch(err) {
