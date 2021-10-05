@@ -11,11 +11,11 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:id', mw.checkAccountId, (req, res, next) => {
-  // DO YOUR MAGIC
+router.get('/:id', mw.checkAccountId, async (req, res, next) => {
   try {
-    res.json('get accounts by id')
-
+    const { id } = req.params
+    const account = await Account.getById(id)
+    res.json(account)
   } catch(err) {
     next(err)
   }
