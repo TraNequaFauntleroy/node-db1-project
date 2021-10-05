@@ -12,8 +12,10 @@ const getById = id => { //if an ID doesn't exist, id = undefined
     .first() //this allows us to get the first one
 }
 
-const create = account => {
-  // DO YOUR MAGIC
+const create = async account => {
+  //insert into accounts (name, budget) values('tyra', 800);
+  const [id] = await db('accounts').insert(account) //returns an array of ids
+  return getById(id)
 }
 
 const updateById = (id, account) => {
