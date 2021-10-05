@@ -5,8 +5,11 @@ const getAll = () => {
   return db('accounts')
 }
 
-const getById = id => {
-  // DO YOUR MAGIC
+const getById = id => { //if an ID doesn't exist, id = undefined
+  // select * from accounts where id=1;
+  return db('accounts')
+    .where('id', id) //this will resolve a collection of accounts
+    .first() //this allows us to get the first one
 }
 
 const create = account => {
